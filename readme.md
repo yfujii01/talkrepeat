@@ -6,6 +6,15 @@ open jtalkを繰り返し呼び出す
 
 open jtalkをインストールする
 
+
+go get github.com/yfujii01/talkrepeat
+
+
+- 削除
+rm -rf $GOPATH/src/github.com/yfujii01/talkrepeat
+rm $GOPATH/bin/talkrepeat
+
+
 - macの場合
 ```
 brew install open-jtalk

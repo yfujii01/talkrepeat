@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"bufio"
 	"errors"
-	"./config"
+	"talkrepeat/config"
 )
 
 func main() {
