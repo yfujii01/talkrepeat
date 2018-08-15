@@ -2,12 +2,12 @@ package main
 
 import (
 	"os/exec"
-	"go_hello_world/src"
 	"os"
 	"fmt"
 	"bufio"
 	"log"
-	"./config"
+	"github.com/yfujii01/talkrepeat/config"
+	"errors"
 )
 
 func main() {
@@ -55,7 +55,7 @@ func main() {
 
 func say(mes string, c *config.Config) {
 	//テキストファイルを作成する
-	src.FileWrite("./talkfile.txt", mes)
+	FileWrite("./talkfile.txt", mes)
 
 	//テキストファイルから音声ファイルを作成する
 	exec.Command("open_jtalk",
@@ -68,4 +68,22 @@ func say(mes string, c *config.Config) {
 
 	//しゃべる
 	exec.Command("afplay", "./out.wav").Start()
+}
+
+func FileWrite(filename string, mes string) (error) {
+
+	if filename == ""{
+		//log.Fatal("ファイル名が空白")
+		return errors.New("ファイル名が空白です。")
+	}
+
+	file, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE, 0666)
+	if err != nil {
+		//log.Fatal(err)
+		return errors.New("ファイル書き込みエラー")
+	}
+	defer file.Close()
+	fmt.Fprintln(file, mes)
+
+	return nil
 }
