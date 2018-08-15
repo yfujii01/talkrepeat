@@ -6,13 +6,12 @@ import (
 	"fmt"
 	"bufio"
 	"errors"
-	"talkrepeat/config"
 )
 
 func main() {
 
 	//configを読み込む
-	c := config.Read()
+	c := Read()
 
 	//辞書フォルダ存在確認
 	if _, err := os.Stat(c.Dictionary); err != nil {
@@ -48,7 +47,7 @@ func main() {
 	os.Remove("./out.wav")
 }
 
-func say(mes string, c *config.Config) {
+func say(mes string, c *Config) {
 	//テキストファイルを作成する
 	FileWrite("./talkfile.txt", mes)
 
@@ -65,9 +64,28 @@ func say(mes string, c *config.Config) {
 	exec.Command("afplay", "./out.wav").Start()
 }
 
+// 構造体定義
+type Config struct {
+	Dictionary string
+	Voice      string
+}
+
+// 環境変数を読み込み構造体へ割当
+func Read() (*Config) {
+
+	// 構造体を定義
+	c := new(Config)
+
+	c.Dictionary = os.Getenv("TALK_REPEAT_DIC")
+	c.Voice = os.Getenv("TALK_REPEAT_VOICE")
+
+	// 正常
+	return c
+}
+
 func FileWrite(filename string, mes string) (error) {
 
-	if filename == ""{
+	if filename == "" {
 		//log.Fatal("ファイル名が空白")
 		return errors.New("ファイル名が空白です。")
 	}
