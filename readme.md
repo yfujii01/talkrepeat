@@ -17,6 +17,11 @@ $ export TALK_REPEAT_VOICE=/usr/local/Cellar/open-jtalk/1.10_1/voice/mei/mei_nor
 $ export TALK_REPEAT_PLAY=afplay
 ```
 
+- 更新
+```
+go get -u github.com/yfujii01/talkrepeat
+```
+
 - 削除
 ```
 $ rm -rf $GOPATH/src/github.com/yfujii01/talkrepeat
