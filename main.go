@@ -13,6 +13,7 @@ func main() {
 	//configを読み込む
 	c := Read()
 
+
 	//辞書フォルダ存在確認
 	if _, err := os.Stat(c.Dictionary); err != nil {
 		fmt.Printf("config [dictionary] error (%v)\n", err)
@@ -61,13 +62,14 @@ func say(mes string, c *Config) {
 	os.Remove("./talkfile.txt")
 
 	//しゃべる
-	exec.Command("afplay", "./out.wav").Start()
+	exec.Command(c.Play, "./out.wav").Start()
 }
 
 // 構造体定義
 type Config struct {
 	Dictionary string
 	Voice      string
+	Play       string
 }
 
 // 環境変数を読み込み構造体へ割当
@@ -78,6 +80,7 @@ func Read() (*Config) {
 
 	c.Dictionary = os.Getenv("TALK_REPEAT_DIC")
 	c.Voice = os.Getenv("TALK_REPEAT_VOICE")
+	c.Play = os.Getenv("TALK_REPEAT_PLAY")
 
 	// 正常
 	return c

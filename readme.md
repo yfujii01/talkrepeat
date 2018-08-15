@@ -14,6 +14,7 @@ $ go get github.com/yfujii01/talkrepeat
 ```
 $ export TALK_REPEAT_DIC=/usr/local/Cellar/open-jtalk/1.10_1/dic
 $ export TALK_REPEAT_VOICE=/usr/local/Cellar/open-jtalk/1.10_1/voice/mei/mei_normal.htsvoice
+$ export TALK_REPEAT_PLAY=afplay
 ```
 
 - 削除
