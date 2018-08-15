@@ -1,4 +1,4 @@
-# talkrepl
+# talkrepeat
 
 open jtalkを繰り返し呼び出す
 
