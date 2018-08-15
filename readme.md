@@ -17,6 +17,11 @@ brew install open-jtalk
 環境によって辞書ファイルとvoiceファイルのパスを修正する。
 open_jtalkのインストール方法によって各々修正が必要。
 
+
+export TALK_REPEAT_DIC=/usr/local/Cellar/open-jtalk/1.10_1/dic
+export TALK_REPEAT_VOICE=/usr/local/Cellar/open-jtalk/1.10_1/voice/mei/mei_normal.htsvoice
+
+
 - macの場合
 ```
 {

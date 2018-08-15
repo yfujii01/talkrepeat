@@ -5,19 +5,14 @@ import (
 	"os"
 	"fmt"
 	"bufio"
-	"log"
-	"github.com/yfujii01/talkrepeat/config"
 	"errors"
+	"./config"
 )
 
 func main() {
 
 	//configを読み込む
-	c, err := config.Read("config.json")
-	if err != nil {
-		log.Println(err)
-		os.Exit(1)
-	}
+	c := config.Read()
 
 	//辞書フォルダ存在確認
 	if _, err := os.Stat(c.Dictionary); err != nil {
